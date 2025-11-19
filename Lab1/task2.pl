@@ -53,9 +53,3 @@ print_not_passed_subjects :-
     forall(member(Subj, Subjects),
            (count_not_passed_subject(Subj, Count),
             format('Предмет "~w" - не сдали: ~w студентов~n', [Subj, Count]))).
-
-% ------------------------------------------------------------
-% Примеры использования:
-% ?- print_average_subjects.
-% ?- print_not_passed_groups.
-% ?- print_not_passed_subjects.
