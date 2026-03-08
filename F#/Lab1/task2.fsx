@@ -60,23 +60,6 @@ let newton f f' x0 =
 
     iterations phi x0
 
-let formatCell = function
-    | Converged (root, iterations) -> sprintf "%.8f (%d)" root iterations
-    | Diverged iterations -> sprintf "DIVERGED (%d)" iterations
-    | DomainError reason -> sprintf "ERROR: %s" reason
-
-let printRow number dResult iResult nResult =
-    let dCell = formatCell dResult
-    let iCell = formatCell iResult
-    let nCell = formatCell nResult
-
-    printfn
-        "%-4d | %28s | %28s | %28s"
-        number
-        dCell
-        iCell
-        nCell
-
 let f25 x =
     sqrt (1. - 0.4 * x * x) - asin x
 
@@ -121,6 +104,23 @@ let solveVariant27 =
 
 printfn "%-4s | %28s | %28s | %28s" "#" "Dichotomy" "Iterations" "Newton"
 printfn "------------------------------------------------------------------------------------------------------"
+
+let formatCell = function
+    | Converged (root, iterations) -> sprintf "%.8f (%d)" root iterations
+    | Diverged iterations -> sprintf "DIVERGED (%d)" iterations
+    | DomainError reason -> sprintf "ERROR: %s" reason
+
+let printRow number dResult iResult nResult =
+    let dCell = formatCell dResult
+    let iCell = formatCell iResult
+    let nCell = formatCell nResult
+
+    printfn
+        "%-4d | %28s | %28s | %28s"
+        number
+        dCell
+        iCell
+        nCell
 
 let d25, i25, n25 = solveVariant25
 let d26, i26, n26 = solveVariant26
