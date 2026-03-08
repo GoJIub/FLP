@@ -17,7 +17,7 @@ type SolveResult =
 let dichotomy f a b =
     let fa = f a
 
-    if f a * f b > 0. then
+    if fa * f b > 0. then
         DomainError "Dichotomy requires opposite signs on [a, b]"
     else
         let rec loop left right fLeft iter =
